@@ -1,11 +1,11 @@
 const inputFileButton = document.getElementById("inputfilebutton");
 inputFileButton.addEventListener("click", clickFileButton);
 
-const inputNumberButton = document.getElementById("EntradaBotaoNUmero123...");
+const inputNumberButton = document.getElementById("inputnumberbutton");
 inputNumberButton.addEventListener("click", clickNumberButton);
 
 function clickFileButton() {
-    arquivo = document.getElementById("EntradaDeArquivos");
+    arquivo = document.getElementById("inputfile");
 
     var fr = new FileReader();
 
@@ -15,23 +15,21 @@ function clickFileButton() {
 
         fr.onload = function () {
             info = fr.result;
-            document.getElementById('SaidaDeArquivos').textContent = fr.result;
+            document.getElementById('outputfile').textContent = fr.result;
         }
-
-        var info = document.getElementById('SaidaDeArquivos').textContent
+        var info = document.getElementById('outputfile').textContent
         if (info == "") {
-            throw "O arquivo selecionado esta vazio!"
+            throw "O arquivo selecionado esta vazio"
         }
-
     }
 
     catch (error) {
-        document.getElementById('SaidaDeArquivos').textContent = "O Arquivo nao foi localizado. Verifique se ele existente e tente novamente."
+        document.getElementById('outputfile').textContent = "O arquivo nao foi encontrado , tente novamente"
         alert(error)
     }
 
     finally {
-        alert("Obrigado pela visita , volte sempre!! :D ");
+        alert("Obrigado pela visita , volte sempre");
     }
 
 
@@ -39,36 +37,29 @@ function clickFileButton() {
 }
 
 function clickNumberButton() {
-    numero = document.getElementById("EntradaNumero123...").value 
+    numero = document.getElementById("inputnumber").value
 
     try{    
-        if(numero == ''){                 
-         throw 'Por favor , informe um valor'
+        if(numero == null ){ throw 'Por favor , informe um valor'
         }
-        else if (number <= 5 || number >= 10 ){                         
-         throw 'Por favor , informe um valor maior que 5 e menor que 10' 
+        if(numero < 5 || numero > 10 ) { throw 'Por favor , informe um valor maior que 5 e menor que 10' 
         }
     }
 
     catch(error){
     
-      if(error != 'Por favor , informe um valor' && error != 'Por favor , informe um valor maior que 5 e menor que 10'){ 
-        error = 'erro + erro javascript' // Pedi ajuda para o Fabio , nao fazia a minima ideia de como fazer o passo 4).
-      }
-      
+        document.getElementById('outputnumber').textContent = "error + erro javascript"
       alert(error)
     }
 
     finally{
-        alert("O numero escolhido foi " + numero)
+        alert("O numero escolhido foi " + numero )
     }
 }
 
-
-
-// 1) Inserir um campo de input com a mensagem "informe um valor entre 5 a 10" feito
-    // 2) Verifica se é nulo, se for, lança exception "Informe um valor"  feito
-    // 3) Verifica se é maior que 5 e menor que 10, se não for, lança exception  feito
-    // "Informe um valor maior que 5 e menor que 10"  feito 
-    // 4) Se o try falhar, lançar exception "Erro + erro javascript" não entendi oque é pra fazer 
-    // 5) No finnaly informar "O número escolhido foi + " numero
+// 1) Inserir um campo de input com a mensagem "informe um valor entre 5 a 10"            feito
+    // 2) Verifica se é nulo, se for, lança exception "Informe um valor"                   feito
+    // 3) Verifica se é maior que 5 e menor que 10, se não for, lança exception             feito
+    // "Informe um valor maior que 5 e menor que 10"                                         feito
+    // 4) Se o try falhar, lançar exception "Erro + erro javascript"                        não entendi oque foi proposto
+    // 5) No finnaly informar "O número escolhido foi + " numero                                 feito
